@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Fibonacci
 {
@@ -6,40 +6,48 @@ namespace Fibonacci
     {
         static void Main(string[] args)
         {
-            int numero, x = 1, y = 0, z =0; // z = resultado
+            int numero, x = 0, y = 1, z = 0; // z = resultado
             bool vlvalido; // vl = valor
 
             Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(" ----- FIBONACCI ----- \n");
+            Console.WriteLine(" ----- FIBONACCI ----- \n");
 
             Console.ForegroundColor = ConsoleColor.White;
 
             Console.Write("Digite um número (inteiro >= 2): ");
-                    vlvalido = Int32.TryParse (Console.ReadLine(), out numero);
+            vlvalido = Int32.TryParse(Console.ReadLine(), out numero);
 
             if (!vlvalido || numero < 2)
 
             {
-            Console.Write("Programa finalizado: número ");
-                      Console.ForegroundColor = ConsoleColor.DarkRed;
-                              Console.WriteLine("INVÁLIDO.");
-                                      Console.ForegroundColor = ConsoleColor.White;
-                                              Console.WriteLine("Pressione enter.");
-                                                      Console.ReadKey();
-                                                              Environment.Exit(-1);
+                Console.Write("Programa finalizado: número ");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("INVÁLIDO.");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Pressione enter.");
+                Console.ReadKey();
+                Environment.Exit(-1);
             }
 
-            for (int finish = 0; finish < numero; finish++) 
+            for (int finish = 0; finish < numero; finish++)
 
             {
-             z = x + y;
-             Console.WriteLine (z);
-             y = x;
-             x = z;
+                if (finish <= 1)
+                {
+                    z = finish;
+                }
+                else
+                {
+                    z = x + y;
+                    x = y;
+                    y = z;
+                }
+
+                Console.WriteLine(z);
             }
 
             Console.WriteLine("\nPressione enter para finalizar <3 ");
-                    Console.ReadKey();
+            Console.ReadKey();
 
         }
     }
